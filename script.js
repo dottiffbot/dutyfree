@@ -19,6 +19,12 @@ const camera = new THREE.PerspectiveCamera(
 
 
 camera.position.set(4, 0.4, 0);
+
+if(window.outerWidth <= 375 || window.outerWidth <= 800){
+  camera.position.set(4,5,0);
+} else{
+ camera.position.set(4, 0.4, 0);
+}
  
 
 
