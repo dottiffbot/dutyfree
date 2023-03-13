@@ -51,17 +51,22 @@ body{
     margin-top: 0.5em;
   }
   
-  #info{
+  .info{
     position: absolute;
     height: 0;
     width: 100vw;
-    background: rgb(241, 238, 180);
+    /* background: rgba(241, 238, 180, 0.3);
+    border-bottom-left-radius:  20px;
+    border-bottom-right-radius:  20px;
 
-    -webkit-transition: height 2s; 
-    -moz-transition: height 2s; 
-    -ms-transition: height 2s; 
-    -o-transition: height 2s; 
-    transition: height 2s; 
+    box-shadow: 5px 5px 50px black; */
+    
+
+    -webkit-transition: height 0.5s; 
+    -moz-transition: height 0.5s; 
+    -ms-transition: height 0.5s; 
+    -o-transition: height 0.5s; 
+    transition: height 0.5s; 
 
 
   }
@@ -69,26 +74,31 @@ body{
   .about{
     color: #E73F3F;
     width: 35vw;
-    height: 0;
+    height: inherit;
     padding: 2em;
     margin-top: 2em;
     float: right;
     font-weight: 400;
-    visibility: hidden;
+    opacity: 0;
     position: relative;
+    mix-blend-mode: difference;
+
+    transition: opacity 2s;
+
+   
   }
 
   
 
   .open{
-    min-height: 50vh;
+    height: 50vh;
    
   }
 
   .visible{
-    visibility: visible;
-    min-height: 50vh;
-    transition: visibility 2s;
+    opacity: 1;
+
+
   }
 
   @media only screen and (max-width: 980px) {

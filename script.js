@@ -10,16 +10,17 @@ import {
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
-  100,
+ 25,
   window.innerWidth / window.innerHeight,
   0.1,
   1000
 );
 
-camera.position.z = 1;
-camera.position.y = 0.4;
+// camera.position.z = 0.1;
+// camera.position.x = 4;
+// camera.position.y = 0.4;
 
-// camera.position.set(1, 0, 0.4);
+camera.position.set(4, 0.4, 0);
 //   if(window.outerWidth <= 375 || window.outerWidth <= 800){
 //      camera.position.set(0,10,200);
 //    } else{
