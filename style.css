@@ -38,12 +38,71 @@ body{
     justify-content: space-between;
     font-weight: 600;
     color: #EEC534;
-    padding: 1em;
-
+    padding: 1em 2em;
+    position: fixed;
+    width: 100%;
+    z-index: 1;
   }
   
 
   #logo{
-    width: 10vw;
+    max-width: 10vw;
     height: auto;
+    margin-top: 0.5em;
+  }
+  
+  #info{
+    position: absolute;
+    height: 0;
+    width: 100vw;
+    background: rgb(241, 238, 180);
+
+    -webkit-transition: height 2s; 
+    -moz-transition: height 2s; 
+    -ms-transition: height 2s; 
+    -o-transition: height 2s; 
+    transition: height 2s; 
+
+
+  }
+
+  .about{
+    color: #E73F3F;
+    width: 35vw;
+    height: 0;
+    padding: 2em;
+    margin-top: 2em;
+    float: right;
+    font-weight: 400;
+    visibility: hidden;
+    position: relative;
+  }
+
+  
+
+  .open{
+    min-height: 50vh;
+   
+  }
+
+  .visible{
+    visibility: visible;
+    min-height: 50vh;
+    transition: visibility 2s;
+  }
+
+  @media only screen and (max-width: 980px) {
+.about{
+    width: 100vw;
+    margin-top: 1.5em;
+}
+
+.open{
+    min-height: 60vh;
+}
+    #logo{
+        max-width: 30vw;
+
+    }
+  
   }

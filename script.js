@@ -10,7 +10,7 @@ import {
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
-  60,
+  100,
   window.innerWidth / window.innerHeight,
   0.1,
   1000
@@ -18,6 +18,14 @@ const camera = new THREE.PerspectiveCamera(
 
 camera.position.z = 1;
 camera.position.y = 0.4;
+
+// camera.position.set(1, 0, 0.4);
+//   if(window.outerWidth <= 375 || window.outerWidth <= 800){
+//      camera.position.set(0,10,200);
+//    } else{
+//      camera.position.set(0,0,140);
+//    }
+
 
 // create scene
 // const canvas = document.querySelector('#graphic')
@@ -50,7 +58,7 @@ scene.add(ambiLight);
 
 const gltfLoader = new GLTFLoader();
 const url =
-  "./assets/tollb.glb";
+  "./assets/tollb2.glb";
 
 gltfLoader.load(url, (gltf) => {
   const haus = gltf.scene;
