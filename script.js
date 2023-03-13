@@ -16,16 +16,10 @@ const camera = new THREE.PerspectiveCamera(
   1000
 );
 
-// camera.position.z = 0.1;
-// camera.position.x = 4;
-// camera.position.y = 0.4;
+
 
 camera.position.set(4, 0.4, 0);
-//   if(window.outerWidth <= 375 || window.outerWidth <= 800){
-//      camera.position.set(0,10,200);
-//    } else{
-//      camera.position.set(0,0,140);
-//    }
+ 
 
 
 // create scene
@@ -75,6 +69,12 @@ function onWindowResize() {
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.render(scene, camera);
+
+  if(window.outerWidth <= 375 || window.outerWidth <= 800){
+    camera.position.set(4,5,0);
+  } else{
+   camera.position.set(4, 0.4, 0);
+  }
 
 }
 

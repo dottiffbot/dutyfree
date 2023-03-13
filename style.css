@@ -53,14 +53,38 @@ body{
   
   .info{
     position: absolute;
+    top: 0;
+    left: 0;
     height: 0;
-    width: 100vw;
-    /* background: rgba(241, 238, 180, 0.3);
+  
+    width: 100%;
+    background: rgba(241, 238, 180, 0.3);
     border-bottom-left-radius:  20px;
     border-bottom-right-radius:  20px;
 
-    box-shadow: 5px 5px 50px black; */
+    box-shadow: 5px 5px 50px black;
     
+
+  }
+
+  .about{
+    color: #E73F3F;
+    background-color: #EEC534;
+    font-weight: 400;
+  
+    position: absolute;
+    width: 100%;
+    height: 0;
+    top: 0;
+    left: 0;
+    border-bottom-left-radius:  20px;
+    border-bottom-right-radius:  20px;
+
+    box-shadow: 5px 5px 50px black;
+
+    mix-blend-mode: difference;
+    /* display: none; */
+
 
     -webkit-transition: height 0.5s; 
     -moz-transition: height 0.5s; 
@@ -68,30 +92,23 @@ body{
     -o-transition: height 0.5s; 
     transition: height 0.5s; 
 
-
-  }
-
-  .about{
-    color: #E73F3F;
-    width: 35vw;
-    height: inherit;
-    padding: 2em;
-    margin-top: 2em;
-    float: right;
-    font-weight: 400;
-    opacity: 0;
-    position: relative;
-    mix-blend-mode: difference;
-
-    transition: opacity 2s;
+    /* transition: opacity 2s; */
 
    
   }
 
+ .text{
+    width: 35vw;
+    padding: 2em;
+    margin-top: 2em;
+    float: right;
+    display: none;
+  }
   
 
   .open{
-    height: 50vh;
+    height: 70vh;
+    display: block;
    
   }
 
@@ -102,17 +119,21 @@ body{
   }
 
   @media only screen and (max-width: 980px) {
-.about{
-    width: 100vw;
-    margin-top: 1.5em;
-}
+
 
 .open{
-    min-height: 60vh;
+    height: 80vh;
 }
     #logo{
         max-width: 30vw;
 
     }
+
+    .text{
+        width: 90vw;
+        float: none;
+    }
+
+
   
   }
