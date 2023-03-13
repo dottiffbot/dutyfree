@@ -5,9 +5,12 @@ const header = document.querySelector("header")
 
 
 
+
 button.addEventListener("click", function(){
     aboutDiv.classList.toggle("open")
     aboutText.classList.toggle("open")
+    // model.classList.toggle("blur")
+
     
     console.log("clicked")
 })

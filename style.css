@@ -112,17 +112,16 @@ body{
    
   }
 
-  .visible{
-    opacity: 1;
-
-
+  .blur{
+    backdrop-filter: blur(1px);
+    /* opacity: 0.5; */
   }
 
   @media only screen and (max-width: 980px) {
 
 
 .open{
-    height: 80vh;
+    height: 90vh;
 }
     #logo{
         max-width: 30vw;
