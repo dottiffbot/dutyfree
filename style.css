@@ -83,6 +83,7 @@ body{
     box-shadow: 5px 5px 50px black;
 
     mix-blend-mode: difference;
+    backdrop-filter:blur(2px);
     /* display: none; */
 
 
@@ -112,8 +113,8 @@ body{
    
   }
 
-  .blur{
-    backdrop-filter: blur(1px);
+  canvas{
+ /* filter: blur(1px); */
     /* opacity: 0.5; */
   }
 
