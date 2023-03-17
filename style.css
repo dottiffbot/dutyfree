@@ -22,7 +22,10 @@ body{
     margin: 0px;
     height: 100vh;
     background: #032682;
-    font-family: forma-djr-deck, sans-serif; 
+    font-family: forma-djr-text, sans-serif; 
+    -moz-font-feature-settings: "salt";
+    -webkit-font-feature-settings: "salt";
+    font-feature-settings: "salt";
     
 }
   canvas {
@@ -36,7 +39,6 @@ body{
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
-    font-weight: 600;
     color: #EEC534;
     padding: 1em 2em;
     position: fixed;
