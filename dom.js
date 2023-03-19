@@ -3,7 +3,7 @@ const info_el = document.getElementById("info")
 const links_el = document.getElementById("links").getElementsByTagName("a")
 const logo_el = document.getElementById("logosvg");
 
-info.onclick = function () {
+info_el.onclick = function () {
     about_el.classList.toggle('open');
 
     logo_el.classList.toggle('logo-open');
