@@ -58,7 +58,7 @@ a {
 }
 
 a:hover, #info:hover{
-  border-bottom: 2px solid var(--duty-purple);
+  border-bottom: 2px solid var(--duty-blue);
   cursor: pointer;
   -webkit-transition: border-bottom 0.3s ease-in-out; 
   -moz-transition: border-bottom 0.3s ease-in-out; 
