@@ -1,21 +1,17 @@
-const aboutDiv = document.querySelector(".about")
-const aboutText = document.querySelector(".text")
-const button = document.getElementById("button")
-const links = document.getElementById("links").getElementsByTagName("a")
-const logo = document.getElementById("logosvg");
+const about_el = document.querySelector(".about")
+const info_el = document.getElementById("info")
+const links_el = document.getElementById("links").getElementsByTagName("a")
+const logo_el = document.getElementById("logosvg");
 
-button.onclick = function () {
-    aboutDiv.classList.toggle('open')
-    aboutText.classList.toggle("text-open")
-    // model.classList.toggle("blur")
-    // console.log("clicked")
+info.onclick = function () {
+    about_el.classList.toggle('open');
 
-    logo.classList.toggle('logo-open');
+    logo_el.classList.toggle('logo-open');
 
-    for(let link of links){
+    for(let link of links_el){
         link.classList.toggle("links-open");
 
-        if(aboutDiv.classList.contains('open')){
+        if(about_el.classList.contains('open')){
         link.onmouseenter = function(){
             this.style.borderBottomColor = '#f0eee8';
         }
