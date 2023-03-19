@@ -10,7 +10,7 @@ import {
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
- 20,
+ 18,
   window.innerWidth / window.innerHeight,
   0.1,
   1000
@@ -97,21 +97,3 @@ function animate() {
 }
 
 animate();
-
-// const aboutText = document.querySelector(".text")
-// const aboutDiv = document.querySelector(".about")
-// const button = document.querySelector("#button")
-// const header = document.querySelector("header")
-// const model = document.querySelector("canvas")
-
-
-
-
-// button.addEventListener("click", function(){
-//     aboutDiv.classList.toggle("open")
-//     aboutText.classList.toggle("open")
-//     // model.classList.toggle("blur")
-
-    
-//     console.log("clicked")
-// })

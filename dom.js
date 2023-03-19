@@ -13,7 +13,7 @@ info_el.onclick = function () {
 
         if(about_el.classList.contains('open')){
         link.onmouseenter = function(){
-            this.style.borderBottomColor = '#f0eee8';
+            this.style.borderBottomColor = 'var(--duty-white)';
         }
 
         link.onmouseleave = function(){
@@ -23,7 +23,7 @@ info_el.onclick = function () {
     }else{
 
             link.onmouseenter = function(){
-                this.style.borderBottomColor = '#1f009B';
+                this.style.borderBottomColor = 'var(--duty-blue)';
             }
 
         link.onmouseleave = function(){
