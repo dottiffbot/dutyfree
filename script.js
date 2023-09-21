@@ -18,7 +18,7 @@ const camera = new THREE.PerspectiveCamera(
 
 
 
-camera.position.set(4, 0.4, 0);
+camera.position.set(0, 0, 0);
 
 if(window.outerWidth <= 375 || window.outerWidth <= 800){
   camera.position.set(4,5,0);
@@ -35,7 +35,7 @@ const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 1;
+renderer.toneMappingExposure = 2;
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.className = "graphic";
 renderer.setSize(window.innerWidth, window.innerHeight);
@@ -45,25 +45,26 @@ renderer.setClearColor(0x000000, 0);
 
 // controls
 const controls = new OrbitControls(camera, renderer.domElement);
+controls.enableZoom = false;
 controls.update();
 
 //light
-const spotLight = new THREE.SpotLight();
-spotLight.position.set(20, 150, 180);
-scene.add(spotLight);
-
-const color = 0xffffff;
-const intensity = 0.5;
-const ambiLight = new THREE.AmbientLight(color, intensity);
+const intensity = 0.3;
+const ambiLight = new THREE.AmbientLight(0x404040, intensity);
+const directLight = new THREE.DirectionalLight(0x404040, 2.5);
 scene.add(ambiLight);
+scene.add(directLight);
 
+//model
 const gltfLoader = new GLTFLoader();
 const url =
-  "./assets/tollb.glb";
+  "./assets/tolb2.0.glb";
 
 gltfLoader.load(url, (gltf) => {
-  const haus = gltf.scene;
-  scene.add(haus);
+  const tolb = gltf.scene;
+
+  scene.add(tolb);
+  
 
 })
 
@@ -77,7 +78,7 @@ function onWindowResize() {
   renderer.render(scene, camera);
 
   if(window.outerWidth <= 375 || window.outerWidth <= 800){
-    camera.position.set(4,5,0);
+    camera.position.set(0,0,0);
   } else{
    camera.position.set(4, 0.4, 0);
   }
@@ -91,7 +92,7 @@ function animate() {
 
   controls.update();
 
-   scene.rotation.y -= 0.001;
+  //  scene.rotation.y += 0.001;
   renderer.render(scene, camera);
 
 }
