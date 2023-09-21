@@ -10,23 +10,19 @@ import {
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
- 18,
+  18,
   window.innerWidth / window.innerHeight,
   0.1,
   1000
 );
 
-
-
 camera.position.set(0, 0, 0);
 
-if(window.outerWidth <= 375 || window.outerWidth <= 800){
-  camera.position.set(4,5,0);
-} else{
- camera.position.set(4, 0.4, 0);
+if (window.outerWidth <= 375 || window.outerWidth <= 800) {
+  camera.position.set(4, 5, 0);
+} else {
+  camera.position.set(4, 0.4, 0);
 }
- 
-
 
 // create scene
 // const canvas = document.querySelector('#graphic')
@@ -39,7 +35,12 @@ renderer.toneMappingExposure = 2;
 renderer.outputEncoding = THREE.sRGBEncoding;
 renderer.className = "graphic";
 renderer.setSize(window.innerWidth, window.innerHeight);
-document.body.appendChild(renderer.domElement);
+
+// Get the "tolb" div element by its id
+const tolbDiv = document.getElementById("tolb");
+
+// Append the renderer's DOM element to the "tolb" div
+tolbDiv.appendChild(renderer.domElement);
 
 renderer.setClearColor(0x000000, 0);
 
@@ -64,7 +65,7 @@ gltfLoader.load(url, (gltf) => {
   const tolb = gltf.scene;
 
   scene.add(tolb);
-  
+
 
 })
 
@@ -77,10 +78,10 @@ function onWindowResize() {
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.render(scene, camera);
 
-  if(window.outerWidth <= 375 || window.outerWidth <= 800){
-    camera.position.set(0,0,0);
-  } else{
-   camera.position.set(4, 0.4, 0);
+  if (window.outerWidth <= 375 || window.outerWidth <= 800) {
+    camera.position.set(0, 0, 0);
+  } else {
+    camera.position.set(4, 0.4, 0);
   }
 
 }

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,37 +11,51 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.typekit.net/lqy2dei.css">
 </head>
+
 <body>
-    <main>
+
     <nav>
-    <ul id="links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#ideology">Ideology</a></li>
-    </ul>
-    <div id="contact-btn"> <a href="#contact">Contact</a></div>
+        <ul id="links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#ideology">Ideology</a></li>
+        </ul>
+        <div id="contact-btn"> <a href="#contact">Contact</a></div>
     </nav>
-    <section id="tagline">
-        <div id="bold"> Exploring what's between art, design and algorithms</div>
-        <div id="sub">
-            Duty Free is a New York City-based design collective organized by Tee Topor, Munus Shih, and Nikki Makagiansar. 
-        </div>
-    </section>
-    <section id="about">
 
-    </section>
-    <section id="ideology">
+    <main>
+        <section id="tagline">
+            <div id="bold"> Exploring what's between art, design and algorithms
+            </div>
+            <div id="sub">
+                Duty Free is a New York City-based design collective organized
+                by Tee Topor, Munus Shih, and Nikki Makagiansar.
+            </div>
+        </section>
+        <section id="about">
 
-    </section>
-    <section id="contact">
-        <p class="link" id="email">dutyfreedesigncoop@gmail.com</p>
-        <p>Email</p>
-        <p class="link" id="insta">@dutyfreehehe</p>
-        <p>Instgram</p>
-    </section>
+        </section>
+        <section id="ideology">
+
+        </section>
+        <section id="contact">
+
+            <p class="link" id="email"
+                onclick="copyToClipboard('dutyfreedesigncoop@gmail.com')">
+                dutyfreedesigncoop@gmail.com</p>
+            <p>Email</p>
+
+            <a href="https://www.instagram.com/dutyfreehehe/">
+                <p class="link" id="insta">@dutyfreehehe</p>
+            </a>
+            <p>Instgram</p>
+
+        </section>
     </main>
 
+    <div id="tolb"></div>
 
     <script src="dom.js"></script>
     <script type="module" src="script.js"></script>
 </body>
+
 </html>
