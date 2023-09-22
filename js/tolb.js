@@ -2,7 +2,6 @@ import * as THREE from "three";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
 import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
-import LocomotiveScroll from 'locomotive-scroll';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -73,15 +72,19 @@ window.addEventListener("resize", onWindowResize);
 
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
+
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.render(scene, camera);
+  // if (camera.aspect > 1){
+
+  // }
 
   if (window.outerWidth <= 375 || window.outerWidth <= 800) {
-    camera.position.set(0, 0, 0);
+    camera.position.set(10, 0.5, 0);
   } else {
     camera.position.set(4, 0.4, 0);
   }
+  camera.updateProjectionMatrix();
 }
 
 function animate() {
@@ -97,13 +100,20 @@ animate();
 let prevPos = 0;
 scroller.on("scroll", (args) => {
   const scrollPos = args.scroll.y;
+  const zRotation = scene.rotation.z;
   if (scrollPos > prevPos){
-    scene.rotation.x += 0.001;
-    scene.rotation.z -= 0.001;
+    scene.rotation.x += 0.01;
+    scene.rotation.z -= 0.015;
   } else{
-    scene.rotation.x -= 0.001;
-    scene.rotation.z += 0.001;
+    scene.rotation.x -= 0.01;
+    scene.rotation.z += 0.015;
   }
-  console.log(args.scroll.y)
+  // write a line of code that gets the zrotation and limits the rotation once it reaches a certain angle
+
+  // if(zRotation <= - 1){
+    
+  // }
+  // console.log(args)
+  console.log(scene.rotation.z)
   prevPos = scrollPos;
 });
