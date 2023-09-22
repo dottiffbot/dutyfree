@@ -120,6 +120,11 @@ a {
   color: var(--duty-text);
 }
 
+em {
+  font-family: 'lyon-text', serif;
+  font-style: italic;
+}
+
 
 /* NAV */
 
