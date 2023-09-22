@@ -50,6 +50,12 @@ const scroller = new LocomotiveScroll({
     initPosition: { x: 0, y: 0 },
     // Add other options and callbacks as needed
     lerp: 0.05,
+    mobile: {
+        smooth: true
+    },
+    tablet: {
+        smooth: true
+    }
 });
 
 document.addEventListener('DOMContentLoaded', function () {
