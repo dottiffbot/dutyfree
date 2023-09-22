@@ -2,11 +2,7 @@ import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.119.1/build/three.m
 
 import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.119.1/examples/jsm/controls/OrbitControls.js";
 import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.119.1/examples/jsm/loaders/GLTFLoader.js";
-import {
-  CSS2DRenderer,
-  CSS2DObject,
-} from "https://unpkg.com/three@0.125.2/examples/jsm/renderers/CSS2DRenderer.js";
-
+import { RGBELoader } from "https://cdn.jsdelivr.net/npm/three@0.119.1/examples/jsm/loaders/RGBELoader.js"
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
   12,
@@ -24,16 +20,14 @@ if (window.outerWidth <= 375 || window.outerWidth <= 800) {
 }
 
 // create scene
-// const canvas = document.querySelector('#graphic')
 
 const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
 renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
-renderer.toneMappingExposure = 2;
+renderer.toneMappingExposure = 1;
 renderer.outputEncoding = THREE.sRGBEncoding;
-renderer.className = "graphic";
-renderer.setSize(window.innerWidth, window.innerHeight);
+// renderer.className = "graphic";
 
 // Get the "tolb" div element by its id
 const tolbDiv = document.getElementById("tolb");
@@ -45,21 +39,34 @@ renderer.setClearColor(0x000000, 0);
 
 // controls
 const controls = new OrbitControls(camera, renderer.domElement);
+// controls.addEventListener( 'change', animate );
 controls.enableZoom = false;
 controls.update();
 
 //light
 const intensity = 0.3;
-const ambiLight = new THREE.AmbientLight(0x404040, intensity);
+const ambientLight = new THREE.AmbientLight(0x404040, intensity);
 const directLight = new THREE.DirectionalLight(0x404040, 2.5);
-scene.add(ambiLight);
+scene.add(ambientLight);
 scene.add(directLight);
 
+// enviroment texture
+const rgbeLoader = new RGBELoader();
+const hdr = "./assets/images/phone_shop_1k.hdr"
+				
+					rgbeLoader.load(hdr,(texture) => {
+
+						texture.mapping = THREE.EquirectangularReflectionMapping;
+						scene.environment = texture;
+
+    
+          })
+
+			
 //model
 const gltfLoader = new GLTFLoader();
 const url =
   "./assets/tolb2.0.glb";
-  let meshPosition;
 
 gltfLoader.load(url, (gltf) => {
  
@@ -68,7 +75,7 @@ gltfLoader.load(url, (gltf) => {
   scene.add(tolb);
 })
 
-
+// resize the model on window resize
 window.addEventListener("resize", onWindowResize);
 
 function onWindowResize() {
@@ -82,18 +89,17 @@ function onWindowResize() {
   } else {
     camera.position.set(4, 0.4, 0);
   }
-
 }
-
-
 
 function animate() {
   requestAnimationFrame(animate);
   controls.update();
-  //  scene.rotation.x += 0.001;
   renderer.render(scene, camera);
-
 }
+
+animate();
+
+// make the tolb move when the user scrolls
 let prevScrollY = window.scrollY
 window.addEventListener('scroll', function (){
   const scrollY = window.scrollY;
@@ -108,4 +114,3 @@ window.addEventListener('scroll', function (){
  prevScrollY = scrollY;
 })
 
-animate();
