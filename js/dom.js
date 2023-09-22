@@ -47,15 +47,14 @@ document.documentElement.style.setProperty('--duty-text', selectedColors.color);
 const scroller = new LocomotiveScroll({
     el: document.querySelector('[data-scroll-container]'),
     smooth: true,
-    getSpeed: true, // Enable the getSpeed option
+    initPosition: { x: 0, y: 0 },
     // Add other options and callbacks as needed
-
-    // Define the scrolling speed
-    getSpeed: function () {
-        return 100000; // Adjust the value to set the desired scrolling speed
-    },
+    lerp: 0.05,
 });
 
+document.addEventListener('DOMContentLoaded', function () {
+    scroller.update();
+});
 
 const anchorLinks = document.querySelectorAll('nav a');
 
