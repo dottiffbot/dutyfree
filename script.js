@@ -7,16 +7,15 @@ import {
   CSS2DObject,
 } from "https://unpkg.com/three@0.125.2/examples/jsm/renderers/CSS2DRenderer.js";
 
-
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
-  18,
+  12,
   window.innerWidth / window.innerHeight,
   0.1,
   1000
 );
 
-camera.position.set(0, 0, 0);
+camera.position.set(4, 0.4, 0);
 
 if (window.outerWidth <= 375 || window.outerWidth <= 800) {
   camera.position.set(4, 5, 0);
@@ -60,13 +59,13 @@ scene.add(directLight);
 const gltfLoader = new GLTFLoader();
 const url =
   "./assets/tolb2.0.glb";
+  let meshPosition;
 
 gltfLoader.load(url, (gltf) => {
+ 
   const tolb = gltf.scene;
-
+  tolb.rotation.set(Math.PI/-8,0,0);
   scene.add(tolb);
-
-
 })
 
 
@@ -90,12 +89,23 @@ function onWindowResize() {
 
 function animate() {
   requestAnimationFrame(animate);
-
   controls.update();
-
-  //  scene.rotation.y += 0.001;
+  //  scene.rotation.x += 0.001;
   renderer.render(scene, camera);
 
 }
+let prevScrollY = window.scrollY
+window.addEventListener('scroll', function (){
+  const scrollY = window.scrollY;
+
+  if(scrollY > prevScrollY){
+  scene.rotation.x += 0.01;
+  scene.rotation.z -= 0.01;
+ }else{
+  scene.rotation.x -= 0.015;
+  scene.rotation.z += 0.01;
+ }
+ prevScrollY = scrollY;
+})
 
 animate();
