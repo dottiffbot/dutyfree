@@ -41,21 +41,28 @@ const selectedColors = colorCombinations[randomIndex];
 document.documentElement.style.setProperty('--duty-bg', selectedColors.bg);
 document.documentElement.style.setProperty('--duty-text', selectedColors.color);
 
-// butter.js
-// butter.init({ wrapperId: 'butter', cancelOnTouch: true });
-
 const scroller = new LocomotiveScroll({
     el: document.querySelector('[data-scroll-container]'),
     smooth: true,
     initPosition: { x: 0, y: 0 },
     // Add other options and callbacks as needed
     lerp: 0.05,
+    smoothMobile: true,
+    smartphone: {
+        smooth: true,
+    },
     mobile: {
-        smooth: true
+        breakpoint: 0,
+        smooth: true,
+        inertia: 0.8,
+        getDirection: true,
     },
     tablet: {
-        smooth: true
-    }
+        breakpoint: 0,
+        smooth: true,
+        inertia: 0.8,
+        getDirection: true,
+    },
 });
 
 document.addEventListener('DOMContentLoaded', function () {
