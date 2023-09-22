@@ -40,6 +40,15 @@ html {
   font-size: 16px;
 }
 
+html.has-scroll-smooth {
+  overflow: hidden;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
 body {
   background: var(--duty-bg);
   color: var(--duty-text);
@@ -53,13 +62,19 @@ body {
   -moz-font-feature-settings: "salt";
   -webkit-font-feature-settings: "salt";
   font-feature-settings: "salt";
+
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-delay: 1.5s;
+  animation-duration: 1.5s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
 }
 
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  scroll-behavior: smooth;
 }
 
 canvas {
@@ -133,6 +148,8 @@ nav {
   padding: 1.5rem 4rem;
   color: var(--duty-text);
   z-index: 9999999999;
+
+  opacity: 0;
 }
 
 nav a {
@@ -150,6 +167,7 @@ section {
   width: 100%;
   height: auto;
   padding: 4rem;
+  opacity: 0;
 }
 
 #tagline {
@@ -178,6 +196,8 @@ section {
   flex-direction: column;
   justify-content: center;
   font-family: forma-djr-display, sans-serif;
+  background-color: var(--duty-bg);
+  z-index: 8;
 }
 
 #tolb {
@@ -188,7 +208,26 @@ section {
   height: 100vh;
   overflow: hidden;
   pointer-events: none;
+
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 0.5s;
+  animation-delay: 3s;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  z-index: 5;
 }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 
 button {
   max-width: 90vw;
@@ -283,6 +322,14 @@ button p {
 
 /* IDEOLOGY SECTION */
 
+#about {
+  z-index: 6;
+}
+
+#ideology {
+  z-index: 7;
+}
+
 .ideology-wrapper {
   display: flex;
   justify-content: space-between;
@@ -299,7 +346,7 @@ button p {
 
 @media only screen and (max-width: 768px) {
 
-  h1#bold{
+  h1#bold {
     font-size: 13vw;
   }
 
@@ -333,7 +380,7 @@ button p {
     align-self: flex-start;
     width: 100%;
   }
-  
+
 
   .ideology-wrapper {
     flex-direction: column;
@@ -342,12 +389,12 @@ button p {
   h4 {
     margin-bottom: 3rem;
   }
-  
+
 
   #email::before,
-#insta::before {
-  width: 50%;
-  padding: 0.4rem 1rem 0.6rem 1rem;
-}
+  #insta::before {
+    width: 50%;
+    padding: 0.4rem 1rem 0.6rem 1rem;
+  }
 
 }

@@ -65,7 +65,6 @@ document.addEventListener('DOMContentLoaded', function () {
 const anchorLinks = document.querySelectorAll('nav a');
 
 anchorLinks.forEach((anchorLink) => {
-    console.log(anchorLink)
     let hashval = anchorLink.getAttribute('href');
     let target = document.querySelector(hashval);
 
