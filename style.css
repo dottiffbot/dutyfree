@@ -1,13 +1,22 @@
 /* GLOBAL STYLES */
 @font-face {
   font-family: "lyon-text";
-  src: url(/assets/fonts/lyon-text-regular.otf);
+  src: url(/assets/fonts/lyon-text-regular-no2.otf);
+  font-style: normal;
+  font-weight: 400;
 }
 
 @font-face {
   font-family: "lyon-text";
-  src: url(/assets/fonts/lyon-text-regular-italic.otf);
+  src: url(/assets/fonts/lyon-text-regular-no2-italic.otf);
   font-style: italic;
+  font-weight: 400;
+}
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 :root {
@@ -33,17 +42,22 @@ body {
   font-size: 16px;
   font-weight: 700;
   font-family: lyon-text, serif;
-  -moz-font-feature-settings: "salt";
-  -webkit-font-feature-settings: "salt";
-  font-feature-settings: "salt";
   line-height: 1.2;
+  font-variant-numeric: lining-nums;
+  -moz-font-feature-settings: "lnum";
+  -webkit-font-feature-settings: "lnum";
+  font-feature-settings: "lnum";
+  -moz-font-feature-settings: "ss01";
+  -webkit-font-feature-settings: "ss01";
+  font-feature-settings: "ss01";
+
 }
 
 main {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 24px;
+  scroll-behavior: smooth;
 }
 
 canvas {
@@ -55,16 +69,54 @@ canvas {
   margin-top: 1em;
 } */
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  font-weight: normal;
+}
+
+p {
+  font-size: 1.5rem;
+  line-height: 1.3;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+
+h2 {
+  font-family: lyon-text;
+  font-style: normal;
+  font-weight: 450;
+  max-width: 35vw;
+  font-size: 2rem;
+  text-align: center;
+  line-height: 120%;
+  letter-spacing: -0.03em;
+}
+
+
+h3 {
+  font-family: 'lyon-text-regular-no2', serif;
+  font-size: 3rem;
+  letter-spacing: -0.03em;
+  margin-bottom: 3rem;
+}
+
+h4, nav a {
+  font-family: forma-djr-text, sans-serif;
+  font-size: 1.5rem;
+  letter-spacing: -0.03em;
+  font-weight: 600;
+}
+
 a {
   font-size: 1em;
   text-decoration: none;
   /* border-bottom: 2px solid transparent; */
   color: var(--duty-text);
-  -webkit-transition: all 0.3s ease-in-out;
-  -moz-transition: all 0.3s ease-in-out;
-  -ms-transition: all 0.3s ease-in-out;
-  -o-transition: all 0.3s ease-in-out;
-  transition: all 0.3s ease-in-out;
 }
 
 /* a:hover {
@@ -91,21 +143,28 @@ nav {
   flex-direction: row;
   align-items: center;
   font-weight: 700;
-  font-family: forma-djr-text, sans-serif;
-  font-size: 1em;
-  font-style: normal;
-  line-height: 110%;
   justify-content: space-between;
   position: fixed;
   width: calc(100% - 96px);
-  /* padding: 1em 1.5em; */
+  padding: 1.5rem 4rem;
   color: var(--duty-text);
   z-index: 1;
 }
 
+nav a {
+  font-size: 1.5em;
+  font-style: normal;
+  letter-spacing: -0.03em;
+  line-height: 1;
+}
+
+section:not(#contact) {
+  border-bottom: 1px solid var(--duty-text);
+}
+
 section {
-  width: calc(100% - 96px);
-  min-height: 100vh;
+  width: 100%;
+  padding: 4rem;
 }
 
 #tagline {
@@ -113,6 +172,7 @@ section {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  min-height: 100vh;
 }
 
 #bold {
@@ -126,23 +186,12 @@ section {
   max-width: 90vw;
 }
 
-#sub {
-  font-family: lyon-text;
-  font-style: normal;
-  font-weight: 450;
-  max-width: 35vw;
-  font-size: 1.5vw;
-  text-align: center;
-  line-height: 120%;
-  letter-spacing: -0.8px;
-}
-
 #contact {
   color: var(--duty-text);
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  font-family: forma-djr-display, sans-serif;
 }
 
 #tolb {
@@ -157,8 +206,12 @@ section {
 
 button {
   max-width: 90vw;
+  background: none;
+  border: none;
   word-break: break-all;
   text-align: center;
+  color: var(--duty-text);
+  align-self: center;
 }
 
 .link {
@@ -179,33 +232,47 @@ button {
   margin-left: 1em;
 }
 
-#email {
+#email,
+#insta {
   position: relative;
   display: inline-block;
   padding: 10px;
 }
 
-#email::before {
-  content: "Copy to Clipboard";
+#email::before,
+#insta::before {
   position: absolute;
-  display: flex;
-  padding: 20px;
-  justify-content: center;
-  align-items: center;
+  padding: 0.1rem 1.2rem;
   left: 50%;
-  transform: translateX(-50%);
-  background-color: rgba(0, 0, 0, 0.8);
-  color: #fff;
+  top: 50%;
+  transform: translateX(-50%) translateY(-100%);
+
+  background-color: var(--duty-bg);
+  border: 1px solid var(--duty-text);
   border-radius: 100px;
   opacity: 0;
-  transition: opacity 0.2s ease-in-out;
+  /* transition: opacity 0.2s ease-in-out; */
+
+  font-size: 1.5rem;
+  line-height: 2;
+  text-transform: none;
+}
+
+#email::before {
+  content: "Click to Copy";
+}
+
+#insta::before {
+  content: "Please follow us";
+  pointer-events: none;
 }
 
 #email.copied::before {
   content: "Copied!";
 }
 
-#email:hover::before {
+#email:hover::before,
+#insta:hover::before {
   opacity: 1;
 }
 
@@ -213,31 +280,28 @@ button {
   cursor: pointer;
 }
 
+/* ABOUT SECTION */
+#about-text {
+  display: flex;
+  flex-direction: column;
+}
+
+#about-text p {
+  width: calc((100% - (1.5rem * 2)) / 3 * 2 + 1.5rem);
+  align-self: flex-end;
+}
 
 /* IDEOLOGY SECTION */
-p {
-  font-size: 1.5rem;
-  line-height: 1.3;
-}
-
-#ideology {
-  gap: 20px;
-}
 
 .ideology-wrapper {
-  background-color: blue;
   display: flex;
   justify-content: space-between;
+  column-gap: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
 .ideology-wrapper>* {
   flex: 1 1 0px;
-}
-
-h4 {
-  font-family: forma-djr-display, sans-serif;
-  font-size: 1.5rem;
-
 }
 
 /* MEDIA QUERIES */

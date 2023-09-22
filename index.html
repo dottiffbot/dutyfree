@@ -14,23 +14,28 @@
 
 <body>
 
-    <main id="butter">
-        <nav>
+    <main data-scroll-container>
+        <nav data-scroll-section>
             <ul id="links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#ideology">Ideology</a></li>
+                <li><a href="#about" class="location location--1"
+                        data-scroll-to>About</a></li>
+                <li><a href="#ideology" class="location location--2"
+                        data-scroll-to>Ideology</a></li>
             </ul>
-            <div id="contact-btn"> <a href="#contact">Contact</a></div>
+            <div id="contact-btn"> <a href="#contact"
+                    class="location location--1" data-scroll-to>Contact</a>
+            </div>
         </nav>
 
 
-        <section id="tagline">
-            <div id="bold"> Exploring what's between art, design and algorithms
-            </div>
-            <div id="sub">
+        <section id="tagline" data-scroll-section>
+            <h1 id="bold" data-scroll> Exploring what's between art, design and
+                algorithms
+            </h1>
+            <h2>
                 Duty Free is a New York City-based design collective organized
                 by Tee Topor, Munus Shih, and Nikki Makagiansar.
-            </div>
+            </h2>
         </section>
 
         <section id="about">
@@ -41,13 +46,14 @@
                 </h3>
             </div>
 
-            <div>
+            <div id="about-text">
                 <p>We specialize in interactive experiences that transcend the
                     digital screen. Duty Free’s practice exists within the
                     liminal space between graphic design, algorithmic
                     generation, and art experience. Our practice is guided by
-                    the question: what does mutual aid look like within art and
-                    design communities?</p>
+                    the question: <em>what does mutual aid look like within art
+                        and
+                        design communities?</em></p>
                 <p>To us, duty represents a calling to re-imagine design’s
                     purpose as a tool to uplift marginalized communities and to
                     contribute to an informed society.</p>
@@ -61,10 +67,8 @@
 
         <section id="ideology">
 
-            <div>
-                <h3>We have a shared political ideology that informs our
-                    process.</h3>
-            </div>
+            <h3>We have a shared political ideology that informs our
+                process.</h3>
 
 
 
@@ -167,21 +171,36 @@
 
         <section id="contact">
 
-            <button class="link" id="email">
-                dutyfreedesigncoop@gmail.com</button>
-            <p>Email</p>
+            <h3>Say hi, connect with us, peepee poopoo.</h3>
 
-            <a href="https://www.instagram.com/dutyfreehehe/" id="insta">
-                @dutyfreehehe
-            </a>
-            <p>Instgram</p>
+            <button class="link" id="email">
+                dutyfreedesigncoop
+                <br>@gmail.com
+                <p>Email</p>
+            </button>
+
+
+            <button class="link" id="insta"><a
+                    href="https://www.instagram.com/dutyfreehehe/">
+                    @dutyfreehehe
+                </a>
+                <p>Instagram</p>
+            </button>
+
 
         </section>
     </main>
 
     <div id="tolb"></div>
 
-    <script defer src="js/butter.js"></script>
+    <!-- <script defer src="js/butter.js"></script> -->
+    <!-- <script defer src="js/luxy.js"></script> -->
+    <script src="
+https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js
+"></script>
+    <link href="
+https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css
+" rel="stylesheet">
     <script defer src="js/dom.js"></script>
     <script type="module" src="js/script.js"></script>
 </body>

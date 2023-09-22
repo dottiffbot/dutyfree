@@ -14,7 +14,7 @@ function copyToClipboard(text) {
 }
 
 link.addEventListener('click', () => {
-    copyToClipboard(link.textContent);
+    copyToClipboard("dutyfreedesigncoop@gmail.com");
 });
 
 link.addEventListener('mouseenter', () => {
@@ -42,9 +42,22 @@ document.documentElement.style.setProperty('--duty-bg', selectedColors.bg);
 document.documentElement.style.setProperty('--duty-text', selectedColors.color);
 
 // butter.js
-butter.init({ wrapperId: 'butter', cancelOnTouch: true });
+// butter.init({ wrapperId: 'butter', cancelOnTouch: true });
 
-window.addEventListener('scroll', function () {
-    const scrollTop = window.scrollY;
-    console.log('Window Scroll Top:', scrollTop);
+const locomotiveScroll = new LocomotiveScroll({
+    el: document.querySelector('[data-scroll-container]'),
+    smooth: true
+});
+const anchorLinks = document.querySelectorAll('.fixed-nav .location');
+
+anchorLinks.forEach((anchorLink) => {
+    let hashval = anchorLink.getAttribute('href');
+    let target = document.querySelector(hashval);
+
+    anchorLink.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        locomotiveScroll.scrollTo(target);
+    });
 });
