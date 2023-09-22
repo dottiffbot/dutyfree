@@ -1,11 +1,8 @@
-import * as THREE from 'three';
-import  { OrbitControls } from 'three/addons/controls/OrbitControls.js';
-import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
-import { RGBELoader } from 'three/addons/loaders/RGBELoader.js';
-
-
-// import LocomotiveScroll from 'locomotive-scroll';
-// const scroll = new LocomotiveScroll();
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
+import LocomotiveScroll from 'locomotive-scroll';
 
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
@@ -30,7 +27,7 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1;
-renderer.outputColorSpace= THREE.SRGBColorSpace;
+renderer.outputColorSpace = THREE.SRGBColorSpace;
 
 // Get the "tolb" div element by its id
 const tolbDiv = document.getElementById("tolb");
@@ -46,20 +43,6 @@ const controls = new OrbitControls(camera, renderer.domElement);
 controls.enableZoom = false;
 controls.update();
 
-// scroller
-// const scroller = new LocomotiveScroll({
-//   el: document.querySelector('[data-scroll-container]'),
-//   smooth: true
-// });
-
-// scroller.on('scroll', args => {
-//   controls.scroll(args);
-// });
-
-// scroller.on('call', (...args) => {
-//   console.log(args);
-// });
-
 //light
 const intensity = 0.3;
 const ambientLight = new THREE.AmbientLight(0x404040, intensity);
@@ -69,28 +52,21 @@ scene.add(directLight);
 
 // enviroment texture
 const rgbeLoader = new RGBELoader();
-const hdr = "./assets/images/phone_shop_1k.hdr"
-				
-					rgbeLoader.load(hdr,(texture) => {
+const hdr = "./assets/images/phone_shop_1k.hdr";
+rgbeLoader.load(hdr, (texture) => {
+  texture.mapping = THREE.EquirectangularReflectionMapping;
+  scene.environment = texture;
+});
 
-						texture.mapping = THREE.EquirectangularReflectionMapping;
-						scene.environment = texture;
-
-    
-          })
-
-			
 //model
 const gltfLoader = new GLTFLoader();
-const url =
-  "./assets/tolb2.0.glb";
+const url = "./assets/tolb2.0.glb";
 
 gltfLoader.load(url, (gltf) => {
- 
   const tolb = gltf.scene;
-  tolb.rotation.set(Math.PI/-8,0,0);
+  tolb.rotation.set(Math.PI / -8, 0, 0);
   scene.add(tolb);
-})
+});
 
 // resize the model on window resize
 window.addEventListener("resize", onWindowResize);
@@ -117,18 +93,17 @@ function animate() {
 
 animate();
 
-// make the tolb move when the user scrolls
-let prevScrollY = window.scrollY
-window.addEventListener('scroll', function (){
-  const scrollY = window.scrollY;
-
-  if(scrollY > prevScrollY){
-  scene.rotation.x += 0.01;
-  scene.rotation.z -= 0.01;
- }else{
-  scene.rotation.x -= 0.015;
-  scene.rotation.z += 0.01;
- }
- prevScrollY = scrollY;
-})
-
+// scroller
+let prevPos = 0;
+scroller.on("scroll", (args) => {
+  const scrollPos = args.scroll.y;
+  if (scrollPos > prevPos){
+    scene.rotation.x += 0.001;
+    scene.rotation.z -= 0.001;
+  } else{
+    scene.rotation.x -= 0.001;
+    scene.rotation.z += 0.001;
+  }
+  console.log(args.scroll.y)
+  prevPos = scrollPos;
+});
