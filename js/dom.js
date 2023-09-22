@@ -44,13 +44,23 @@ document.documentElement.style.setProperty('--duty-text', selectedColors.color);
 // butter.js
 // butter.init({ wrapperId: 'butter', cancelOnTouch: true });
 
-const locomotiveScroll = new LocomotiveScroll({
+const scroller = new LocomotiveScroll({
     el: document.querySelector('[data-scroll-container]'),
-    smooth: true
+    smooth: true,
+    getSpeed: true, // Enable the getSpeed option
+    // Add other options and callbacks as needed
+
+    // Define the scrolling speed
+    getSpeed: function () {
+        return 100000; // Adjust the value to set the desired scrolling speed
+    },
 });
-const anchorLinks = document.querySelectorAll('.fixed-nav .location');
+
+
+const anchorLinks = document.querySelectorAll('nav a');
 
 anchorLinks.forEach((anchorLink) => {
+    console.log(anchorLink)
     let hashval = anchorLink.getAttribute('href');
     let target = document.querySelector(hashval);
 
@@ -58,6 +68,6 @@ anchorLinks.forEach((anchorLink) => {
         e.preventDefault();
         e.stopPropagation();
 
-        locomotiveScroll.scrollTo(target);
+        scroller.scrollTo(target);
     });
 });

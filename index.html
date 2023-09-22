@@ -10,26 +10,28 @@
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.typekit.net/lqy2dei.css">
+
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css">
+    <script
+        src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>
 </head>
 
 <body>
 
     <main data-scroll-container>
-        <nav data-scroll-section>
+        <nav>
             <ul id="links">
-                <li><a href="#about" class="location location--1"
-                        data-scroll-to>About</a></li>
-                <li><a href="#ideology" class="location location--2"
-                        data-scroll-to>Ideology</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#ideology">Ideology</a></li>
             </ul>
-            <div id="contact-btn"> <a href="#contact"
-                    class="location location--1" data-scroll-to>Contact</a>
+            <div id="contact-btn"> <a href="#contact">Contact</a>
             </div>
         </nav>
 
 
-        <section id="tagline" data-scroll-section>
-            <h1 id="bold" data-scroll> Exploring what's between art, design and
+        <section data-scroll-section id="tagline">
+            <h1 id="bold"> Exploring what's between art, design and
                 algorithms
             </h1>
             <h2>
@@ -38,7 +40,7 @@
             </h2>
         </section>
 
-        <section id="about">
+        <section data-scroll-section id="about">
 
             <div>
                 <h3>Duty Free is a New York City-based design collective
@@ -65,7 +67,7 @@
         </section>
 
 
-        <section id="ideology">
+        <section data-scroll-section id="ideology">
 
             <h3>We have a shared political ideology that informs our
                 process.</h3>
@@ -169,7 +171,7 @@
 
 
 
-        <section id="contact">
+        <section data-scroll-section id="contact">
 
             <h3>Say hi, connect with us, peepee poopoo.</h3>
 
@@ -195,12 +197,7 @@
 
     <!-- <script defer src="js/butter.js"></script> -->
     <!-- <script defer src="js/luxy.js"></script> -->
-    <script src="
-https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.js
-"></script>
-    <link href="
-https://cdn.jsdelivr.net/npm/locomotive-scroll@4.1.4/dist/locomotive-scroll.min.css
-" rel="stylesheet">
+
     <script defer src="js/dom.js"></script>
     <script type="module" src="js/script.js"></script>
 </body>
