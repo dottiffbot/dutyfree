@@ -47,22 +47,7 @@ const scroller = new LocomotiveScroll({
     initPosition: { x: 0, y: 0 },
     // Add other options and callbacks as needed
     lerp: 0.05,
-    smoothMobile: true,
-    smartphone: {
-        smooth: true,
-    },
-    mobile: {
-        breakpoint: 0,
-        smooth: true,
-        inertia: 0.8,
-        getDirection: true,
-    },
-    tablet: {
-        breakpoint: 0,
-        smooth: true,
-        inertia: 0.8,
-        getDirection: true,
-    },
+    smoothMobile: true
 });
 
 document.addEventListener('DOMContentLoaded', function () {
