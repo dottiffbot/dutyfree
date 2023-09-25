@@ -1,8 +1,8 @@
-import * as THREE from "https://cdn.jsdelivr.net/npm/three@0.119.1/build/three.module.js";
+import * as THREE from "three";
+import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import { GLTFLoader } from "three/addons/loaders/GLTFLoader.js";
+import { RGBELoader } from "three/addons/loaders/RGBELoader.js";
 
-import { OrbitControls } from "https://cdn.jsdelivr.net/npm/three@0.119.1/examples/jsm/controls/OrbitControls.js";
-import { GLTFLoader } from "https://cdn.jsdelivr.net/npm/three@0.119.1/examples/jsm/loaders/GLTFLoader.js";
-import { RGBELoader } from "https://cdn.jsdelivr.net/npm/three@0.119.1/examples/jsm/loaders/RGBELoader.js"
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(
   12,
@@ -26,8 +26,7 @@ renderer.setPixelRatio(window.devicePixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
 renderer.toneMapping = THREE.ACESFilmicToneMapping;
 renderer.toneMappingExposure = 1;
-renderer.outputEncoding = THREE.sRGBEncoding;
-// renderer.className = "graphic";
+renderer.outputColorSpace = THREE.SRGBColorSpace;
 
 // Get the "tolb" div element by its id
 const tolbDiv = document.getElementById("tolb");
@@ -52,64 +51,69 @@ scene.add(directLight);
 
 // enviroment texture
 const rgbeLoader = new RGBELoader();
-const hdr = "./assets/images/phone_shop_1k.hdr"
-
+const hdr = "./assets/images/phone_shop_1k.hdr";
 rgbeLoader.load(hdr, (texture) => {
-
   texture.mapping = THREE.EquirectangularReflectionMapping;
   scene.environment = texture;
-
-
-})
-
+});
 
 //model
 const gltfLoader = new GLTFLoader();
-const url =
-  "./assets/tolb2.0.glb";
+const url = "./assets/tolb2.0.glb";
 
 gltfLoader.load(url, (gltf) => {
-
   const tolb = gltf.scene;
   tolb.rotation.set(Math.PI / -8, 0, 0);
   scene.add(tolb);
-})
+});
 
 // resize the model on window resize
 window.addEventListener("resize", onWindowResize);
 
 function onWindowResize() {
   camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
+
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.render(scene, camera);
+  // if (camera.aspect > 1){
+
+  // }
 
   if (window.outerWidth <= 375 || window.outerWidth <= 800) {
-    camera.position.set(0, 0, 0);
+    camera.position.set(10, 0.5, 0);
   } else {
     camera.position.set(4, 0.4, 0);
   }
+  camera.updateProjectionMatrix();
 }
-
-let prevScrollY = 0;
-
-scroller.on('scroll', (args) => {
-  const scrollY = args.scroll;
-
-  if (scrollY > prevScrollY) {
-    scene.rotation.x += 0.01;
-    scene.rotation.z -= 0.01;
-  } else {
-    scene.rotation.x -= 0.015;
-    scene.rotation.z += 0.01;
-  }
-  prevScrollY = scrollY;
-});
 
 function animate() {
   requestAnimationFrame(animate);
+  // scene.rotation.x += 0.001;
   controls.update();
   renderer.render(scene, camera);
 }
 
 animate();
+
+// scroller
+let prevPos = 0;
+scroller.on("scroll", (args) => {
+  const scrollPos = args.scroll.y;
+  const zRotation = scene.rotation.z;
+  if (scrollPos > prevPos){
+    scene.rotation.x += 0.01;
+    scene.rotation.z -= 0.015;
+  } else{
+    scene.rotation.x -= 0.01;
+    scene.rotation.z += 0.015;
+  }
+  // write a line of code that gets the zrotation and limits the rotation once it reaches a certain angle
+
+  // if(zRotation <= - 1){
+    
+  // }
+  // console.log(args)
+  console.log(scene.rotation.z)
+  prevPos = scrollPos;
+});
