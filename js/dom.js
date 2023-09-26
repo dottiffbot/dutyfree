@@ -1,3 +1,4 @@
+import LocomotiveScroll from 'locomotive-scroll';
 const link = document.querySelector('#email');
 
 function copyToClipboard(text) {
@@ -41,7 +42,7 @@ const selectedColors = colorCombinations[randomIndex];
 document.documentElement.style.setProperty('--duty-bg', selectedColors.bg);
 document.documentElement.style.setProperty('--duty-text', selectedColors.color);
 
-const scroller = new LocomotiveScroll({
+export const scroller = new LocomotiveScroll({
     el: document.querySelector('[data-scroll-container]'),
     smooth: true,
     initPosition: { x: 0, y: 0 },
