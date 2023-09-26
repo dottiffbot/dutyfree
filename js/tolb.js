@@ -52,7 +52,7 @@ scene.add(directLight);
 
 // enviroment texture
 const rgbeLoader = new RGBELoader();
-const hdr = "./assets/images/phone_shop_1k.hdr";
+const hdr = "images/phone_shop_1k.hdr";
 rgbeLoader.load(hdr, (texture) => {
   texture.mapping = THREE.EquirectangularReflectionMapping;
   scene.environment = texture;
@@ -60,7 +60,7 @@ rgbeLoader.load(hdr, (texture) => {
 
 //model
 const gltfLoader = new GLTFLoader();
-const url = "./assets/tolb2.0.glb";
+const url = "tolb2.0.glb";
 
 gltfLoader.load(url, (gltf) => {
   const tolb = gltf.scene;
