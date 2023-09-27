@@ -62,6 +62,7 @@ rgbeLoader.load(hdr, (texture) => {
 const gltfLoader = new GLTFLoader();
 const url = "tolb2.0.glb";
 
+
 gltfLoader.load(url, (gltf) => {
   const tolb = gltf.scene;
   tolb.rotation.set(Math.PI / -8, 0, 0);
@@ -99,22 +100,30 @@ animate();
 
 // scroller
 let prevPos = 0;
+
+let maxZRotation = Math.PI/2;
+
 scroller.on("scroll", (args) => {
   const scrollPos = args.scroll.y;
-  const zRotation = scene.rotation.z;
+
+
   if (scrollPos > prevPos){
     scene.rotation.x += 0.01;
-    scene.rotation.z -= 0.015;
+    scene.rotation.z -= 0.005;
   } else{
     scene.rotation.x -= 0.01;
-    scene.rotation.z += 0.015;
+    scene.rotation.z += 0.005;
   }
   // write a line of code that gets the zrotation and limits the rotation once it reaches a certain angle
 
-  // if(zRotation <= - 1){
-    
+  // if(scene.rotation.z > maxZRotation){
+  //  scene.rotation.z = maxZRotation;
+  // } else if (scene.rotation.z < -maxZRotation){
+  //   scene.rotation.z = -maxZRotation;
   // }
   // console.log(args)
+  // console.log(rotZ)
   console.log(scene.rotation.z)
+  // console.log(Math.PI/2)
   prevPos = scrollPos;
 });
