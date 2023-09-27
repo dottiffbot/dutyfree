@@ -1,14 +1,14 @@
 /* GLOBAL STYLES */
 @font-face {
   font-family: "lyon-text";
-  src: url(docs/fonts/lyon-text-regular-no2.otf);
+  src: url(fonts/lyon-text-regular-no2.otf);
   font-style: normal;
   font-weight: 400;
 }
 
 @font-face {
   font-family: "lyon-text";
-  src: url(docs/fonts/lyon-text-regular-no2-italic.otf);
+  src: url(fonts/lyon-text-regular-no2-italic.otf);
   font-style: italic;
   font-weight: 400;
 }
