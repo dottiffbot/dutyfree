@@ -1,5 +1,5 @@
 module.exports = {
-    base: '',
+    base: '/',
 build: {
     outDir: './docs'
 }
