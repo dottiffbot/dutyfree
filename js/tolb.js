@@ -100,13 +100,11 @@ animate();
 
 // scroller
 let prevPos = 0;
-
 let maxZRotation = Math.PI/2;
 
 scroller.on("scroll", (args) => {
   const scrollPos = args.scroll.y;
-
-
+//  rotate on scroll and change direction
   if (scrollPos > prevPos){
     scene.rotation.x += 0.01;
     scene.rotation.z -= 0.005;
@@ -114,8 +112,6 @@ scroller.on("scroll", (args) => {
     scene.rotation.x -= 0.01;
     scene.rotation.z += 0.005;
   }
-  // write a line of code that gets the zrotation and limits the rotation once it reaches a certain angle
-
   // if(scene.rotation.z > maxZRotation){
   //  scene.rotation.z = maxZRotation;
   // } else if (scene.rotation.z < -maxZRotation){
@@ -123,7 +119,7 @@ scroller.on("scroll", (args) => {
   // }
   // console.log(args)
   // console.log(rotZ)
-  console.log(scene.rotation.z)
+  // console.log(scene.rotation.z)
   // console.log(Math.PI/2)
   prevPos = scrollPos;
 });
