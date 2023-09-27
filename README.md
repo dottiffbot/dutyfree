@@ -19,5 +19,5 @@ to preview production build
 
 `npx vite preview`
 
-Ignore the dist folder when editing the code.
+Ignore the docs folder when editing the code.
 
