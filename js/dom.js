@@ -47,16 +47,11 @@ export const scroller = new LocomotiveScroll({
     smooth: true,
     initPosition: { x: 0, y: 0 },
     // Add other options and callbacks as needed
-    lerp: 0.06,
+    lerp: 0.05,
+    multiplier: 3,
     smoothMobile: true,
     smartphone: {
         smooth: true,
-    },
-    mobile: {
-        breakpoint: 0,
-        smooth: true,
-        inertia: 0.8,
-        getDirection: true,
     },
     tablet: {
         breakpoint: 0,
@@ -64,6 +59,7 @@ export const scroller = new LocomotiveScroll({
         inertia: 0.8,
         getDirection: true,
     },
+    reloadOnContextChange: true,
 });
 
 document.addEventListener('DOMContentLoaded', function () {
